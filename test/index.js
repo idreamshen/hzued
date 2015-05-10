@@ -1,11 +1,8 @@
 var koa = require('koa');
 var app = koa();
+var serve = require('koa-static');
+var mount = require('koa-mount');
 
-app.use(function *(){
-    var self = this;
-    setTimeout(function () {
-        self.body = '123';
-    }, 1000);
-});
+app.use(mount('/js', serve('public/js')));
 
 app.listen(3000);
