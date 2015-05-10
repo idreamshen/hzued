@@ -1,0 +1,23 @@
+{
+  "name": "hzued",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "koa": "^0.20.0",
+    "koa-epost": "0.0.3",
+    "koa-jade": "^1.0.1",
+    "koa-router": "^4.3.2",
+    "koa-session": "^3.1.0",
+    "mongoose": "^4.0.2"
+  }
+}
