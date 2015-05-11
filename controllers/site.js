@@ -3,6 +3,6 @@
  * @param next
  */
 exports.index = function *(next) {
-
+  this.render("index");
 };
 
