@@ -1,0 +1,11 @@
+doctype html
+html(lang='zh')
+    body
+        h1 后台控制面板
+        each topic in topics
+            p= 'id: ' + topic._id + ', 标题: ' + topic.title + ', 创建时间: ' + topic.create_at.toLocaleTimeString()
+        form(method='POST', action='/admin/topic/add')
+            input(type='text', name='title')
+            textarea(name='content')
+            input(type='submit',value='发布')
+
