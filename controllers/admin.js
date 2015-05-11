@@ -37,6 +37,17 @@ exports.login = function *(next) {
 };
 
 /**
+ * @desc 后台退出
+ * @param next
+ */
+exports.logout = function *(next) {
+  if (this.session.adminLogged) {
+    this.session.adminLogged = null;
+    this.redirect('/admin');
+  }
+};
+
+/**
  * @desc 后台控制面板
  * @param next
  */
