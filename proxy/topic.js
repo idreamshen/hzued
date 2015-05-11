@@ -22,3 +22,9 @@ exports.getTopicById = function (tid) {
     })
     .exec();
 };
+
+exports.find = function (conditions, projection, options) {
+  return Topic
+    .find(conditions, projection, options)
+    .exec();
+};

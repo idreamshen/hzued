@@ -54,10 +54,16 @@ exports.logout = function *(next) {
 exports.index = function *(next) {
   if (this.session.adminLogged) {
     var conditions = {deleted: false};
-    var projection = {title: 1, create_at: 1};
+    var projection = {};
     var options = {};
-    var topics = yield Topic.getTopicsByQuery(conditions, projection, options);
-    console.log(topics);
+    var topics = yield Topic.find(conditions, projection, options);
+    for (var i in topics) {
+      var topic = topics[i];
+      var authorid = topic.author_id;
+      var user = yield User.getUserById(authorid);
+      var nickname = user.nickname;
+      topic.author_nickname = nickname;
+    }
     this.render('admin/index', {
       topics: topics
     });

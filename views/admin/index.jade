@@ -23,5 +23,5 @@ html(lang='zh')
                         input(type='submit',value='发布',class='btn btn-info')
         ul
             each topic in topics
-                li= 'id: ' + topic._id + ', 标题: ' + topic.title + ', 创建时间: ' + topic.create_at.toLocaleTimeString()
+                li= 'id: ' + topic._id + ', 标题: ' + topic.title + ', 创建时间: ' + topic.create_at.toLocaleTimeString() + ', 作者: ' + topic.author_nickname
 
