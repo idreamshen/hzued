@@ -1,4 +1,4 @@
 {
-  "db": "mongodb://localhost/hzued",
+  "db": "mongodb://112.74.127.56/hzued",
   "keys": ["123"]
 }

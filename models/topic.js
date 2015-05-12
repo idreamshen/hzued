@@ -12,4 +12,13 @@ var TopicSchema = new Schema({
   update_at: {type: Date, default: Date.now}
 });
 
+TopicSchema.virtual('author_nickname').get(function () {
+  return this.author.nickname;
+});
+TopicSchema.virtual('author_nickname').set(function (val) {
+  this.author = {
+    nickname: val
+  };
+});
+
 mongoose.model('Topic', TopicSchema);

@@ -1,0 +1,27 @@
+doctype html
+head
+    meta(name="viewport",content="width=device-width, initial-scale=1")
+    link(rel="stylesheet", type="text/css" ,href='/css/bootstrap.min.css')
+    link(rel="stylesheet", type="text/css" ,href='/css/admin.css')
+html(lang='zh')
+    body
+        h1 后台控制面板
+
+        div.col-xs-10.col-xs-offset-1
+            form(method='POST', action='/admin/topic/add',class='form-horizontal')
+                div.form-group
+                    label.col-sm-2.control-label 标题：
+                    div.col-sm-10
+                        input(type='text', name='title',class='form-control')
+                div.form-group
+                    label.col-sm-2.control-label 话题：
+                    div.col-sm-10
+                        textarea(name='content',class='form-control')
+                div.form-group
+                    label.col-sm-2.contorl-label
+                    div.col-sm-10
+                        input(type='submit',value='发布',class='btn btn-info')
+        ul
+            each topic in topics
+                li= 'id: ' + topic._id + ', 标题: ' + topic.title + ', 创建时间: ' + topic.create_at.toLocaleTimeString() + ', 作者: ' + topic.author_nickname
+
