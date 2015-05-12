@@ -5,10 +5,12 @@ html(lang='zh')
          div#header
          div#bodyer
             ul
-               li
-                  p 我是大望
-                  p 摘要: 继上一篇博文，继续完善ubuntu下基于python的douban.fm客户端，加入登录、频道选择和命令行参数。
-                  p
-                     span 2015-5-10 14:20
-                     span(style='float:right') 大望
+               each topic in topics
+                  li
+                     p=topic.title
+                     p=topic.content
+                     p
+                        span=topic.create_at.toLocaleString()
+                        span(style='float:right')=topic.author_nickname
+
          div#footer
