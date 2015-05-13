@@ -1,0 +1,14 @@
+.topic-list {
+  margin: 20px -10px 0px 0px; }
+  .topic-list li {
+    float: left;
+    width: 373px;
+    padding: 10px;
+    height: 180px;
+    border: 1px solid #ddd;
+    margin: 0 10px 10px 0; }
+  .topic-list .topic-content {
+    height: 100px;
+    overflow: hidden; }
+
+/*# sourceMappingURL=index.css.map */
