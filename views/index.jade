@@ -1,16 +1,14 @@
-doctype html
-html(lang='zh')
-   body
-      div#wrap
-         div#header
-         div#bodyer
-            ul
-               each topic in topics
-                  li
-                     p=topic.title
-                     p=topic.content
-                     p
-                        span=topic.create_at.toLocaleString()
-                        span(style='float:right')=topic.author_nickname
+extends main
 
-         div#footer
+block append head
+   link(rel="stylesheet",type="text/css",href='/css/index.css')
+block content
+   ul.topic-list
+      each topic in topics
+         li
+            p=topic.title
+            p.topic-content=topic.content
+            p
+               span=topic.create_at.toLocaleString()
+               span(style='float:right')=topic.author_nickname
+
