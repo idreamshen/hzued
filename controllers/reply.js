@@ -7,8 +7,13 @@ var Reply = require('../proxy').Reply;
 exports.add = function *(next) {
   var topicid = this.params.topic_id;
   var content = this.post.content;
+  if (!this.session.hasOwnProperty('user')) {
+    this.body = '您尚未登陆';
+    return;
+  }
   var authorid = this.session.user._id;
-  var reply =  yield Replay.newAndSave(topicid, content, authorid);
+
+  var reply =  yield Reply.newAndSave(topicid, content, authorid);
   if (reply) {
     // TODO
     this.redirect('/');

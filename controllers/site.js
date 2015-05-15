@@ -6,13 +6,7 @@ var User = require('../proxy/').User;
  * @param next
  */
 exports.index = function *(next) {
-  var topics = yield Topic
-    .find({},{},{
-      limit:10,
-      sort: {
-        create_at:-1
-      }
-    });
+  var topics = yield Topic.getTopicsByQuery({}, {limit:6, sort:{create_at: -1}});
   for (var i in topics) {
     var topic = topics[i];
     var authorid = topic.author_id;

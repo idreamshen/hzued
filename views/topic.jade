@@ -1,0 +1,10 @@
+extends main
+block content
+   p='标题' + topic.title
+   p='内容' + topic.content
+   p='作者' + topic.author_nickname
+   p='访问' + topic.visit_count
+   p='回复' + topic.replay_count
+   form(method='POST',action='/topic/' + topic.id + '/reply')
+      input(type='text',name='content')
+      input(type='submit')

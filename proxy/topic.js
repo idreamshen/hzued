@@ -9,9 +9,9 @@ exports.newAndSave = function (title, content, authorid) {
   return topic.save();
 };
 
-exports.getTopicsByQuery = function (conditions, projection, options) {
+exports.getTopicsByQuery = function (query, options) {
   return Topic
-    .find(conditions, projection, options)
+    .find(query, {}, options)
     .exec();
 };
 
@@ -20,11 +20,5 @@ exports.getTopicById = function (tid) {
     .findOne({
       _id: tid
     })
-    .exec();
-};
-
-exports.find = function (conditions, projection, options) {
-  return Topic
-    .find(conditions, projection, options)
     .exec();
 };

@@ -5,10 +5,11 @@ block append head
 block content
    ul.topic-list
       each topic in topics
-         li
-            p=topic.title
-            p.topic-content=topic.content
-            p
-               span=topic.create_at.toLocaleString()
-               span(style='float:right')=topic.author_nickname
+         a(href='/topic/' + topic.id)
+            li
+               p=topic.title
+               p.topic-content=topic.content
+               p
+                  span=topic.create_at.toLocaleString()
+                  span(style='float:right')='作者' + topic.author_nickname + '访问' +topic.visit_count + '回复' + topic.replay_count
 

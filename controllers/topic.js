@@ -1,10 +1,24 @@
 var Topic = require('../proxy').Topic;
+var User = require('../proxy').User;
 
 /**
  * @desc 话题详情
  */
 exports.index = function *(next) {
-
+  var topicid = this.params.topic_id;
+  var topic = yield Topic.getTopicById(topicid);
+  var authorid = topic.author_id;
+  var user = yield User.getUserById(authorid);
+  var nickname = user.nickname;
+  topic.author_nickname = nickname;
+  if (topic) {
+    topic.visit_count++;
+    topic.save();
+    this.render('topic', {topic: topic});
+  } else {
+    // TODO
+    this.redirect('/');
+  }
 };
 
 /**
