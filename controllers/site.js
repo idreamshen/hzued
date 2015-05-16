@@ -14,7 +14,15 @@ exports.index = function *(next) {
     var nickname = user.nickname;
     topic.author_nickname = nickname;
   }
+
+  if (this.session.hasOwnProperty('user')) {
+    var me = {
+      nickname: this.session.user.nickname
+    }
+  }
+
   this.render("index", {
+    me: me,
     topics: topics
   });
 };

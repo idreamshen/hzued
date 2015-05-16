@@ -24,7 +24,8 @@ exports.login = function *(next) {
       if (user.is_admin) {
         this.session.adminLogged = 1;
         this.session.user = {
-          _id: user._id
+          _id: user._id,
+          nickname: user.nickname
         };
         this.redirect('/admin');
       } else {
