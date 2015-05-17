@@ -8,11 +8,14 @@ var user = require('../controllers/user.js');
 var topic = require('../controllers/topic.js');
 var admin = require('../controllers/admin.js');
 var reply = require('../controllers/reply.js');
+var ftk = require('../controllers/ftk.js');
 
 
 router.get('/', site.index);
 router.get('/topic/:topic_id', topic.index);
 router.post('/topic/:topic_id/reply', reply.add);
+
+router.get('/ftk/', ftk.index);
 
 router.get('/admin', admin.index);
 

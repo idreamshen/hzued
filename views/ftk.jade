@@ -1,0 +1,11 @@
+html
+   head
+      script(src='http://192.168.18.50:9000/socket.io/socket.io.js')
+      script(src='http://lib.sinaapp.com/js/jquery/1.9.1/jquery-1.9.1.min.js')
+      script(src='/js/ftk.js')
+   body
+      ul
+      if me
+         input(type='text',value=me.user_id,id='user-id',style='display:none')
+      input(type='text',value='房间名',id='lobby-name')
+      input(type='button',value='创建房间',id='create-lobby')
