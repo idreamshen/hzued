@@ -12,11 +12,11 @@ $(function() {
   socket.on('list_lobby', function (lobbies) {
     console.log(lobbies);
     lobbies.forEach(function (lobby) {
-      $('ul').append('<li>房间名:' + lobby.name + ', 创建者:' + lobby.leader_id + '</li>')
+      $('ul#lobby').append('<li>房间名:' + lobby.name + ', 创建者:' + lobby.leader_id + '</li>')
     })
   });
   socket.on('create_lobby', function (lobby) {
-    $('ul').append('<li>房间名:' + lobby.name + ', 创建者:' + lobby.leader_id + '</li>');
+    $('ul#lobby').append('<li>房间名:' + lobby.name + ', 创建者:' + lobby.leader_id + '</li>');
   });
   $('#create-lobby').click(function () {
     if (userid) {
