@@ -8,6 +8,7 @@ var user = require('../controllers/user.js');
 var topic = require('../controllers/topic.js');
 var admin = require('../controllers/admin.js');
 var reply = require('../controllers/reply.js');
+var plugin = require('../controllers/plugin.js');
 var ftk = require('../controllers/ftk.js');
 
 /**
@@ -19,6 +20,7 @@ router.get('/', site.index);
  */
 router.get('/topic/:topic_id', topic.index);
 router.post('/topic/:topic_id/reply', reply.add);
+router.get('/plugin', plugin.index);
 /**
  * 登陆
  */
