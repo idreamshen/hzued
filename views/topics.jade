@@ -1,0 +1,19 @@
+extends main
+
+block append head
+   link(rel="stylesheet",type="text/css",href='/css/index.css')
+block content
+   if me
+      span=me.nickname
+   else
+      input(type='button',value='登陆')
+   ul.topic-list
+      each topic in topics
+         a(href='/topic/' + topic.id)
+            li
+               p=topic.title
+               p.topic-content=topic.content
+               p
+                  span=topic.create_at.toLocaleString()
+                  span(style='float:right')='作者' + topic.author_nickname + '访问' +topic.visit_count + '回复' + topic.replay_count
+

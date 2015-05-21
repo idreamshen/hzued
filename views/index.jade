@@ -1,19 +1,8 @@
 extends main
 
-block append head
-   link(rel="stylesheet",type="text/css",href='/css/index.css')
 block content
-   if me
-      span=me.nickname
-   else
-      input(type='button',value='登陆')
-   ul.topic-list
-      each topic in topics
-         a(href='/topic/' + topic.id)
-            li
-               p=topic.title
-               p.topic-content=topic.content
-               p
-                  span=topic.create_at.toLocaleString()
-                  span(style='float:right')='作者' + topic.author_nickname + '访问' +topic.visit_count + '回复' + topic.replay_count
-
+    div.module-text
+        h2.text-center VP市场抢购工具1.0.0
+        p
+        p VP抢购插件在VP饰品购买页使用,只要输入自己想购买当前饰品的最大价格点击购买就会自动的帮您购买到当前饰品低于此价格的全部饰品,非常方便,抢购速度爽到爆
+        img(src='/img/img.png')

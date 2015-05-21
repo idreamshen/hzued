@@ -21,7 +21,8 @@ ul, li, ol {
 
 .user-panel {
   float: right;
-  margin-top: 20px; }
+  margin-top: 20px;
+  color: #fff; }
 
 .user-panel a {
   color: #ddd; }
@@ -41,5 +42,16 @@ ul, li, ol {
 
 .ml-10 {
   margin-left: 10px; }
+
+.module-text {
+  width: 900px;
+  margin: 40px auto 0;
+  border: 1px solid #ddd;
+  padding: 20px;
+  font-size: 14px;
+  line-height: 180%; }
+
+#btn-plugin {
+  border-radius: 1px; }
 
 /*# sourceMappingURL=base.css.map */

@@ -5,9 +5,11 @@ ul,li,ol{list-style: none;padding:0}
   font-size:38px;color:#fff;font-weight: 700;margin-top:20px;float: left;
 }
 #login{padding-top: 50px;}
-.user-panel{float: right;margin-top:20px;}
+.user-panel{float: right;margin-top:20px;color:#fff;}
 .user-panel a{color:#ddd;}
 .user-panel a:hover{text-decoration: none;color: #fff;}
 .login-form{width:550px;float: left;padding:10px;}
 .login-introduce{margin-left: 550px;padding: 10px;}
 .ml-10{margin-left: 10px;}
+.module-text{width:900px;margin:40px auto 0;border:1px solid #ddd;padding:20px;font-size:14px;line-height: 180%;}
+#btn-plugin{border-radius: 1px;}
