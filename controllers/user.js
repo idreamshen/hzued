@@ -3,7 +3,11 @@ var Topic = require('../proxy').Topic;
 
 exports.login = function *(next) {
   if (this.method === 'GET') {
-    this.render('login');
+    if (this.session.user) {
+      this.redirect('/');
+    } else {
+      this.render('login');
+    }
   } else if (this.method === 'POST') {
     // TODO
     var username = this.post.username;
@@ -25,6 +29,24 @@ exports.register = function *(next) {
   if (this.method === 'GET') {
     this.render('register');
   } else if (this.method === 'POST') {
-    // TODO
+    var username = this.post.username;
+    var password = this.post.password;
+    var nickname = this.post.nickname;
+    var email = this.post.email;
+    var user = yield User.newAndSave(username,password, nickname, email);
+    if (user) {
+      this.session.user = {
+        _id: user._id,
+        nickname: user.nickname
+      };
+      this.redirect('/');
+    } else {
+      this.body = '注册失败';
+    }
   }
+};
+
+exports.logout = function *(next) {
+  this.session.user = null;
+  this.redirect('/');
 };
