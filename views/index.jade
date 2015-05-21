@@ -3,10 +3,6 @@ extends main
 block append head
    link(rel="stylesheet",type="text/css",href='/css/index.css')
 block content
-   if me
-      span=me.nickname
-   else
-      input(type='button',value='登陆')
    ul.topic-list
       each topic in topics
          a(href='/topic/' + topic.id)
