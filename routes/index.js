@@ -37,6 +37,7 @@ router.post('/register', user.register);
 /**
  * 退出
  */
+router.get('/logout', user.logout);
 router.post('/logout', user.logout);
 /**
  * 天黑请闭眼，find the killer
