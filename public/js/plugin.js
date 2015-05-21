@@ -89,13 +89,21 @@ if ($) {
             type: 'post',
             data: 'id=' + id + '&itemId=' + itemid + '&agreeMent=on',
             success: function (data) {
+              var password = '$.popModal("请先验证交易密码")' || '$.popModal("Please verify the trading password")';
+              var poor = '$.popModal("余额不足")' || '$.popModal("No balance")';
               newsItem = $(data);
-              if (newsItem.find($this).length == 0) {
-                buynumber++;
+              if(data.indexOf(password) != -1){
+                total.text('请先在原来的功能上购买,验证一次交易密码').css("color","#c83636");
+              }else if(data.indexOf(poor) != -1){
+                total.text('余额不足').css("color","#c83636");
+              }else{
+                if (newsItem.find($this).length == 0) {
+                  buynumber++;
+                }
+                total.text('已购买:' + buynumber).css({
+                  'color': '#689021'
+                });
               }
-              total.text('已购买:' + buynumber).css({
-                'color': '#689021'
-              });
             }
           });
         }
