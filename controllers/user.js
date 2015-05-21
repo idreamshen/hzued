@@ -33,6 +33,12 @@ exports.register = function *(next) {
     var password = this.post.password;
     var nickname = this.post.nickname;
     var email = this.post.email;
+
+    if (!username || !password || !nickname || email) {
+      this.body = '注册失败';
+      return;
+    }
+
     try {
       var user = yield User.newAndSave(username,password, nickname, email);
       if (user) {
