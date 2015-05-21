@@ -20,6 +20,9 @@ router.get('/', site.index);
  */
 router.get('/topic/:topic_id', topic.index);
 router.post('/topic/:topic_id/reply', reply.add);
+/**
+ * 插件
+ */
 router.get('/plugin', plugin.index);
 /**
  * 登陆
@@ -31,6 +34,10 @@ router.post('/login', user.login);
  */
 router.get('/register', user.register);
 router.post('/register', user.register);
+/**
+ * 退出
+ */
+router.post('/logout', user.logout);
 /**
  * 天黑请闭眼，find the killer
  */
