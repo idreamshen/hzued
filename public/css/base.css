@@ -15,4 +15,16 @@ ul, li, ol {
   font-weight: 700;
   margin-top: 20px; }
 
+#login {
+  padding-top: 50px; }
+
+.login-form {
+  width: 550px;
+  float: left;
+  padding: 10px; }
+
+.login-introduce {
+  margin-left: 550px;
+  padding: 10px; }
+
 /*# sourceMappingURL=base.css.map */

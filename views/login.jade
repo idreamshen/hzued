@@ -1,4 +1,30 @@
-form(method='POST',action='/login')
-   input(type='text',value='用户名',name='username')
-   input(type='text',value='密码',name='password')
-   input(type='submit')
+extends main
+
+block content
+    div#login
+        div.login-form
+            form(method='POST',action='/login',class='form-horizontal')
+                div.form-group
+                    label.col-xs-3.control-label 用户名：
+                    div.col-xs-9
+                        div.row
+                            div.col-xs-8
+                                input(type='text',name='username',class='form-control')
+                div.form-group
+                    label.col-xs-3.control-label 密码：
+                    div.col-xs-9
+                        div.row
+                            div.col-xs-8
+                                input(type='text',name='password',class='form-control')
+                div.form-group
+                    label.col-xs-3.control-label
+                    div.col-xs-9
+                        div.row
+                            div.col-xs-5
+                                input(type='submit',class='btn btn-success btn-block',value='登录')
+
+        div.login-introduce
+            p 扫一扫加入官方qq群
+            img(src='/img/qq.png',style='border:1px solid #999')
+            p
+            p 官方qq群号：459606870
