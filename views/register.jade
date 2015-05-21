@@ -3,7 +3,8 @@ extends main
 block content
     div#login
         div.login-form
-            div.alert.alert-danger 错误
+            if err
+                div.alert.alert-danger=err
             form(method='POST',action='/register',class='form-horizontal')
                 div.form-group
                     label.col-xs-3.control-label 用户名：
