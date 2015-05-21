@@ -13,10 +13,22 @@ ul, li, ol {
   font-size: 38px;
   color: #fff;
   font-weight: 700;
-  margin-top: 20px; }
+  margin-top: 20px;
+  float: left; }
 
 #login {
   padding-top: 50px; }
+
+.user-panel {
+  float: right;
+  margin-top: 20px; }
+
+.user-panel a {
+  color: #ddd; }
+
+.user-panel a:hover {
+  text-decoration: none;
+  color: #fff; }
 
 .login-form {
   width: 550px;
@@ -26,5 +38,8 @@ ul, li, ol {
 .login-introduce {
   margin-left: 550px;
   padding: 10px; }
+
+.ml-10 {
+  margin-left: 10px; }
 
 /*# sourceMappingURL=base.css.map */

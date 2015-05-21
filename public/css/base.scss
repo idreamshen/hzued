@@ -2,8 +2,12 @@ body{font: 12px/18px 'Helvetica Neue','Lucida Grande','Microsoft YaHei',Arial,'L
 ul,li,ol{list-style: none;padding:0}
 #header{height:60px;background-color: #800000;}
 .logo{
-  font-size:38px;color:#fff;font-weight: 700;margin-top:20px;
+  font-size:38px;color:#fff;font-weight: 700;margin-top:20px;float: left;
 }
 #login{padding-top: 50px;}
+.user-panel{float: right;margin-top:20px;}
+.user-panel a{color:#ddd;}
+.user-panel a:hover{text-decoration: none;color: #fff;}
 .login-form{width:550px;float: left;padding:10px;}
 .login-introduce{margin-left: 550px;padding: 10px;}
+.ml-10{margin-left: 10px;}
