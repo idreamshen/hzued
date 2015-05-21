@@ -35,7 +35,9 @@ exports.register = function *(next) {
     var email = this.post.email;
 
     if (!username || !password || !nickname || !email) {
-      this.body = '注册失败';
+      this.render('register', {
+        err: '内容未填写完整'
+      });
       return;
     }
 
@@ -48,20 +50,26 @@ exports.register = function *(next) {
         };
         this.redirect('/');
       } else {
-        this.body = '注册失败';
+        this.render('register', {
+          err: '注册失败'
+        });
       }
     } catch (e) {
       if (e.code === 11000) {
-        this.body = '注册失败，用户名已存在。'
+        this.render('register', {
+          err: '注册失败，用户名已存在。'
+        });
         console.log(e.errmsg);
       } else {
-        this.body = '注册失败';
+        this.render('register', {
+          err: '注册失败'
+        });
       }
     }
   }
 };
 
 exports.logout = function *(next) {
-  this.session.user = null;
+  this.session.user = undefined;
   this.redirect('/');
 };
