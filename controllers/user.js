@@ -33,15 +33,23 @@ exports.register = function *(next) {
     var password = this.post.password;
     var nickname = this.post.nickname;
     var email = this.post.email;
-    var user = yield User.newAndSave(username,password, nickname, email);
-    if (user) {
-      this.session.user = {
-        _id: user._id,
-        nickname: user.nickname
-      };
-      this.redirect('/');
-    } else {
-      this.body = '注册失败';
+    try {
+      var user = yield User.newAndSave(username,password, nickname, email);
+      if (user) {
+        this.session.user = {
+          _id: user._id,
+          nickname: user.nickname
+        };
+        this.redirect('/');
+      } else {
+        this.body = '注册失败';
+      }
+    } catch (e) {
+      if (e.code === 11000) {
+        this.body = '注册失败，用户名已存在。'
+      } else {
+        this.body = '注册失败';
+      }
     }
   }
 };
