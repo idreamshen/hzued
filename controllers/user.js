@@ -34,7 +34,7 @@ exports.register = function *(next) {
     var nickname = this.post.nickname;
     var email = this.post.email;
 
-    if (!username || !password || !nickname || email) {
+    if (!username || !password || !nickname || !email) {
       this.body = '注册失败';
       return;
     }
@@ -53,6 +53,7 @@ exports.register = function *(next) {
     } catch (e) {
       if (e.code === 11000) {
         this.body = '注册失败，用户名已存在。'
+        console.log(e.errmsg);
       } else {
         this.body = '注册失败';
       }
