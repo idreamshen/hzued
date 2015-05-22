@@ -91,7 +91,6 @@ if ($) {
   btn.click(function () {
     var price = input1.val();
     var number = input2.val();
-    var itemid = window.location.href.match(/\d{2,20}/g);
     var item = $('[name=buyButton]');
     //判断是否有最新页饰品如果有购买对象改成最新的饰品页
     if(newsItem == 'object'){
@@ -99,40 +98,7 @@ if ($) {
     }
     //判断当前页是否有想购买的饰品，如果有继续购买，否则提示
     if (item.length > 0) {
-      item.each(function (i) {
-        if (i < number) {
-          var $this = $(this);
-          var thisPrice = $this.attr("data-price");
-          if(thisPrice <= price){
-            var url = $this.attr('url');
-            var res = /\d{7}/g;
-            var id = url.match(res);
-            $.ajax({
-              url: 'user/sell-pay.html',
-              type: 'post',
-              data: 'id=' + id + '&itemId=' + itemid + '&agreeMent=on',
-              success: function (data) {
-                var password = '$.popModal("请先验证交易密码")' || '$.popModal("Please verify the trading password")';
-                var poor = '$.popModal("余额不足")' || '$.popModal("No balance")';
-                newsItem = $(data);
-                if(data.indexOf(password) != -1){
-                  total.text('请先在原来的功能上购买,验证一次交易密码').css("color","#c83636");
-                }else if(data.indexOf(poor) != -1){
-                  total.text('余额不足').css("color","#c83636");
-                }else{
-                  if (newsItem.find($this).length == 0) {
-                    buynumber++;
-                  }
-                  total.text('已购买:' + buynumber).css({
-                    'color': '#689021'
-                  });
-                }
-              }
-            });
-          }
-
-        }
-      });
+      getAjax(item,number,price);
     } else {
       total.text('当前页面无此价格饰品！').css({
         'color': '#c83636'
@@ -140,4 +106,58 @@ if ($) {
     }
   });
   $('body').append(modal);
+
+  function getAjax(item,number,price){
+    var item = item;
+    var thisnumber = number;//当前购买数量
+    var number = number;
+    var itemid = window.location.href.match(/\d{2,20}/g);
+    item.each(function(i){
+      number --;
+      //数量大于0时执行购买请求
+      if (number >= 0) {
+        var $this = $(this);
+        var thisPrice = $this.attr("data-price");
+        //判断该价格是否大于最大价格如果不是，执行购买请求
+        if(thisPrice <= price){
+          var url = $this.attr('url');
+          var res = /\d{7}/g;
+          var id = url.match(res);
+
+          $.ajax({
+            url: 'user/sell-pay.html',
+            type: 'post',
+            data: 'id=' + id + '&itemId=' + itemid + '&agreeMent=on',
+            success: function (data) {
+              var password = '$.popModal("请先验证交易密码")' || '$.popModal("Please verify the trading password")';
+              var poor = '$.popModal("余额不足")' || '$.popModal("No balance")';
+              var box = $(data);
+              if(data.indexOf(password) != -1){
+                total.text('请先在原来的功能上购买,验证一次交易密码').css("color","#c83636");
+              }else if(data.indexOf(poor) != -1){
+                total.text('余额不足').css("color","#c83636");
+              }else{
+                if (box.find($this).length == 0) {
+                  buynumber++;
+                  thisnumber --;
+                }
+                total.text('已购买:' + buynumber).css({
+                  'color': '#689021'
+                });
+              }
+              //判断是否循环结束购买数量是否完成如果没有继续购买
+              if(i >=item.length - 1 && thisnumber >= 0){
+                var items = box.find('[name=buyButton]');
+                getAjax(items,number,price);
+              }
+
+            }
+          });
+
+
+
+        }
+      }
+    });
+  }
 }
