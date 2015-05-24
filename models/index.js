@@ -11,7 +11,9 @@ mongoose.connect(config.db, function (err) {
 require('./user.js');
 require('./topic.js');
 require('./reply.js');
+require('./chat.js');
 
 exports.User = mongoose.model('User');
 exports.Topic = mongoose.model('Topic');
 exports.Reply = mongoose.model('Reply');
+exports.Chat = mongoose.model('Chat');

@@ -1,0 +1,8 @@
+extends main
+
+block content
+    ul(id='chat-list')
+        each chat in chats
+            li=chat.create_at.toLocaleDateString() + ' ' + chat.nickname + ':' + chat.message
+    input(type='text', id='txt-msg')
+    input(type='button', value='发送', id='btn-send')

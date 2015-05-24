@@ -9,6 +9,7 @@ var topic = require('../controllers/topic.js');
 var admin = require('../controllers/admin.js');
 var reply = require('../controllers/reply.js');
 var plugin = require('../controllers/plugin.js');
+var chat = require('../controllers/chat.js');
 var ftk = require('../controllers/ftk.js');
 
 /**
@@ -39,6 +40,10 @@ router.post('/register', user.register);
  */
 router.get('/logout', user.logout);
 router.post('/logout', user.logout);
+/**
+ * 聊天
+ */
+router.get('/chat', chat.index);
 /**
  * 天黑请闭眼，find the killer
  */
