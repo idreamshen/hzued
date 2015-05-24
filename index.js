@@ -4,16 +4,16 @@ var jade = require('koa-jade');
 var path = require('path');
 var post = require('koa-epost');
 var session = require('koa-session');
-var serve = require('koa-static');
+var staticCache = require('koa-static-cache');
 var mount = require('koa-mount');
 
 var router = require('./routes/index.js');
 var config = require('./config.json');
 
 app.use(post);
-app.use(mount('/js', serve('public/js')));
-app.use(mount('/css', serve('public/css')));
-app.use(mount('/img', serve('public/img')));
+app.use(mount('/js', staticCache(path.join(__dirname, 'public/js'), {maxAge: 7 * 24 * 60 * 60})));
+app.use(mount('/css', staticCache(path.join(__dirname, 'public/css'), {maxAge: 7 * 24 * 60 * 60})));
+app.use(mount('/img', staticCache(path.join(__dirname, 'public/img'), {maxAge: 7 * 24 * 60 * 60})));
 
 app.keys = config.keys;
 app.use(session(app));
