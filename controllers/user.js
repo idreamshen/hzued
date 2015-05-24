@@ -16,6 +16,7 @@ exports.login = function *(next) {
     if (user) {
       this.session.user = {
         _id: user._id,
+        id: user.id,
         nickname: user.nickname
       };
       this.redirect('/');
@@ -46,6 +47,7 @@ exports.register = function *(next) {
       if (user) {
         this.session.user = {
           _id: user._id,
+          id: user.id,
           nickname: user.nickname
         };
         this.redirect('/');

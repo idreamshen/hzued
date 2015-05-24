@@ -6,23 +6,19 @@ var User = require('../proxy/').User;
  * @param next
  */
 exports.index = function *(next) {
-  var topics = yield Topic.getTopicsByQuery({}, {limit:6, sort:{create_at: -1}});
-  for (var i in topics) {
-    var topic = topics[i];
-    var authorid = topic.author_id;
-    var user = yield User.getUserById(authorid);
-    var nickname = user.nickname;
-    topic.author_nickname = nickname;
-  }
+  //var topics = yield Topic.getTopicsByQuery({}, {limit:6, sort:{create_at: -1}});
+  //for (var i in topics) {
+  //  var topic = topics[i];
+  //  var authorid = topic.author_id;
+  //  var user = yield User.getUserById(authorid);
+  //  var nickname = user.nickname;
+  //  topic.author_nickname = nickname;
+  //}
 
-  if (this.session.hasOwnProperty('user')) {
-    var me = {
-      nickname: this.session.user.nickname
-    }
-  }
+  var me = this.session.user;
 
   this.render("index", {
-    me: me,
-    topics: topics
+    me: me
+    //topics: topics
   });
 };
