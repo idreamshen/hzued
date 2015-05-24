@@ -10,7 +10,14 @@ html(lang='zh')
         div#wrap
             div#header
                 div.container
-                    div.logo hZUEd
+                    a.logo(href='/') hZUEd
+                    ul.nav.navbar-nav
+                        li
+                            a(href='/')
+                                span.glyphicon.glyphicon-home
+                                | 首页
+                        li
+                            a(href='') 聊天
                     div.user-panel
                         if me
                             span=me.nickname

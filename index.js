@@ -14,6 +14,7 @@ app.use(post);
 app.use(mount('/js', serve('public/js')));
 app.use(mount('/css', serve('public/css')));
 app.use(mount('/img', serve('public/img')));
+app.use(mount('/fonts', serve('public/fonts')));
 
 app.keys = config.keys;
 app.use(session(app));

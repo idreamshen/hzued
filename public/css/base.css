@@ -8,13 +8,36 @@ ul, li, ol {
 #header {
   height: 60px;
   background-color: #800000; }
+  #header .navbar-nav {
+    margin-left: 30px;
+    margin-top: 5px; }
+    #header .navbar-nav > li {
+      margin-left: 30px; }
+    #header .navbar-nav > li > a {
+      color: #ddd;
+      font-size: 16px;
+      padding-left: 25px; }
+      #header .navbar-nav > li > a .glyphicon {
+        position: absolute;
+        left: 0;
+        font-size: 18px; }
+      #header .navbar-nav > li > a .glyphicon-home {
+        top: 16px; }
+    #header .navbar-nav > li > a:hover, #header .navbar-nav > li > a:active, #header .navbar-nav > li > a:focus {
+      background-color: transparent;
+      color: #fff; }
 
 .logo {
+  display: block;
   font-size: 38px;
   color: #fff;
   font-weight: 700;
   margin-top: 20px;
   float: left; }
+
+.logo:hover {
+  text-decoration: none;
+  color: #fff; }
 
 #login {
   padding-top: 50px; }

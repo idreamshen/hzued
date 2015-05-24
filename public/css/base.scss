@@ -1,9 +1,26 @@
 body{font: 12px/18px 'Helvetica Neue','Lucida Grande','Microsoft YaHei',Arial,'Liberation Sans',FreeSans,'Hiragino Sans GB',sans-serif;}
 ul,li,ol{list-style: none;padding:0}
-#header{height:60px;background-color: #800000;}
-.logo{
-  font-size:38px;color:#fff;font-weight: 700;margin-top:20px;float: left;
+#header{height:60px;background-color: #800000;
+  .navbar-nav{
+    margin-left:30px;margin-top:5px;
+    > li{margin-left: 30px;}
+    > li > a{
+      color: #ddd;font-size:16px;padding-left:25px;
+      .glyphicon{
+        position:absolute;left:0;
+        font-size:18px;
+      }
+      .glyphicon-home{
+        top:16px;
+      }
+    }
+    > li > a:hover,> li > a:active,> li > a:focus{background-color: transparent;color:#fff;}
+  }
 }
+.logo{
+  display:block;font-size:38px;color:#fff;font-weight: 700;margin-top:20px;float: left;
+}
+.logo:hover{text-decoration: none;color:#fff;}
 #login{padding-top: 50px;}
 .user-panel{float: right;margin-top:20px;color:#fff;}
 .user-panel a{color:#ddd;}
